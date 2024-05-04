@@ -7,6 +7,8 @@ from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.optimizers import Adam
 
+# Import necessary libraries and modules
+
 # Set the dataset directory
 dataset_dir = 'E:/image_classification/dataset'
 
@@ -15,6 +17,8 @@ train_datagen = ImageDataGenerator(rescale=1./255, rotation_range=20, width_shif
 val_datagen = ImageDataGenerator(rescale=1./255)
 test_datagen = ImageDataGenerator(rescale=1./255)
 
+# Create data generators for training, validation, and test sets
+# The training data generator applies various data augmentation techniques
 train_generator = train_datagen.flow_from_directory(
         directory=os.path.join(dataset_dir, 'train'),
         target_size=(224, 224),
@@ -45,8 +49,12 @@ model.add(Flatten())
 model.add(Dense(128, activation='relu'))
 model.add(Dense(1, activation='sigmoid'))
 
+# Define the CNN model architecture with convolutional, pooling, and fully connected layers
+
 # Compile the model
 model.compile(optimizer=Adam(learning_rate=0.001), loss='binary_crossentropy', metrics=['accuracy'])
+
+# Compile the model with the specified optimizer, loss function, and metrics
 
 # Train the model
 model.fit(
@@ -56,18 +64,26 @@ model.fit(
         validation_data=val_generator,
         validation_steps=len(val_generator))
 
+# Train the model using the training data generator and validate on the validation data generator
+
 # Evaluate the model on the test set
 test_loss, test_acc = model.evaluate(test_generator, steps=len(test_generator))
 print(f'Test accuracy: {test_acc:.2f}')
 
+# Evaluate the model on the test set and print the test accuracy
+
 # Save the trained model
 model.save('dog_classifier_model.h5')
+
+# Save the trained model to a file
 
 # Streamlit app
 def home_page():
     st.title("Welcome to the Dog Image Classifier")
     st.write("This app allows you to classify images of dogs and learn about convolutional neural networks.")
     st.write("To get started, please select an option from the sidebar.")
+
+# Home page function for the Streamlit app
 
 def image_prediction_page():
     st.title("Image Classifier")
@@ -92,6 +108,8 @@ def image_prediction_page():
         else:
             st.write(f"Sorry, we don't have an image for the {dog_name} breed in our dataset.")
 
+# Image prediction page function for the Streamlit app
+
 def cnn_explanation_page():
     st.title("Convolutional Neural Networks (CNNs) Explained")
     st.write("Convolutional Neural Networks (CNNs) are a type of deep learning algorithm that are particularly well-suited for image classification tasks.")
@@ -99,6 +117,8 @@ def cnn_explanation_page():
     st.write("The final layers of a CNN are typically fully connected layers, which take the extracted features and use them to classify the input image into one or more categories.")
     st.write("Some key advantages of CNNs for image classification include their ability to automatically learn relevant features from the data, their translation invariance (the ability to detect features regardless of their position in the image), and their scalability to large-scale datasets.")
     st.write("If you'd like to learn more about the technical details of CNNs, I recommend checking out the resources on the [Keras website](https://keras.io/guides/convolutional_layers/) or the [TensorFlow documentation](https://www.tensorflow.org/tutorials/images/cnn).")
+
+# CNN explanation page function for the Streamlit app
 
 # Set up the Streamlit app
 PAGES = {
@@ -112,9 +132,12 @@ def app():
     selection = st.sidebar.radio("Go to", list(PAGES.keys()))
     PAGES[selection]()
 
+# Main function to run the Streamlit app
+
 if __name__ == "__main__":
     # Load the trained model
     model = load_model('dog_classifier_model.h5')
     app()
+
 
 
