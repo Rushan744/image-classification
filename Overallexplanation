@@ -1,0 +1,26 @@
+Automatically detects images of Dogs and Cats:
+The code defines a CNN model architecture and trains it on a binary classification task (dogs vs. cats) using the provided dataset.
+The trained model is saved as 'dog_classifier_model.h5' and can be loaded for making predictions.
+User can upload a photo:
+The Streamlit application provides two options for the user to upload an image: either by entering a URL or by selecting a local file.
+The load_image_from_url function is defined to load an image from a given URL.
+The st.file_uploader function is used to allow the user to select a local image file.
+Application specifies the animal and classification probability:
+The image_prediction_page function loads the user-provided image, preprocesses it, and makes a prediction using the loaded model.
+The prediction result (dog or not a dog) and the associated confidence score are displayed to the user.
+Classifier developed with Keras:
+The code uses the Keras library (part of TensorFlow) to define, train, and save the CNN model.
+The model architecture is defined using the Sequential API, with convolutional, pooling, and fully connected layers.
+Educational explanation of CNNs:
+The application includes a dedicated page ("CNN Explanation") that provides an explanation of Convolutional Neural Networks (CNNs).
+The explanation covers the working principle of CNNs, their strengths, weaknesses, and use cases in a user-friendly manner.
+Functional and commented Python scripts:
+The code is well-structured and organized into functions and pages.
+Comments are provided throughout the code to explain the purpose and functionality of different sections.
+Streamlit application with multiple pages:
+The Streamlit application has three main pages: "Home," "Image Prediction," and "CNN Explanation."
+The user can navigate between these pages using the sidebar.
+Bonus: Data augmentation, Transfer Learning, and MLFlow integration:
+The code includes data augmentation techniques (e.g., rotation, shifting, shearing, zooming, and horizontal flipping) applied to the training data generator.
+The application demonstrates the use of pre-trained CNN models (ResNet50) and Vision Transformer models (ViT) for image classification, leveraging Transfer Learning.
+MLFlow is integrated into the application to log model parameters, metrics, and artifacts during the prediction process.
