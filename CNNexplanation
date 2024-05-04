@@ -1,0 +1,14 @@
+def cnn_explanation_page():
+    st.title("Convolutional Neural Networks (CNNs) Explained")
+    st.write("Convolutional Neural Networks (CNNs) are a type of deep learning algorithm that are particularly well-suited for image classification tasks.")
+    st.write("CNNs work by extracting features from the input image through a series of convolutional and pooling layers. The convolutional layers apply filters to the image, which detect specific patterns or features, while the pooling layers reduce the spatial size of the feature maps, making the model more robust to small variations in the input.")
+    st.write("The final layers of a CNN are typically fully connected layers, which take the extracted features and use them to classify the input image into one or more categories.")
+    st.write("Some key advantages of CNNs for image classification include their ability to automatically learn relevant features from the data, their translation invariance (the ability to detect features regardless of their position in the image), and their scalability to large-scale datasets.")
+    st.write("If you'd like to learn more about the technical details of CNNs, I recommend checking out the resources on the [Keras website](https://keras.io/guides/convolutional_layers/) or the [TensorFlow documentation](https://www.tensorflow.org/tutorials/images/cnn).")
+
+# Set up the Streamlit app
+PAGES = {
+    "Home": home_page,
+    "Image Prediction": image_prediction_page,
+    "CNN Explanation": cnn_explanation_page,
+}
